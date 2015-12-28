@@ -51,7 +51,6 @@ def main(filename='data/iris-virginica.txt', C=1.0, kernel_type='linear', epsilo
     print("Converged after %d iterations" % (iterations))
 
 if __name__ == '__main__':
-
     if ('--help' in sys.argv) or ('-h' in sys.argv):
         print("")
         print("Trains a support vector machine.")
@@ -65,12 +64,15 @@ if __name__ == '__main__':
         print("eps:      Convergence value.")
     else:
         kwargs = {}
-        if len(sys.argv) == 5:
+        if len(sys.argv) > 1:
             kwargs['filename'] = sys.argv[1]
+        if len(sys.argv) > 2:
             kwargs['C'] = float(sys.argv[2])
+        if len(sys.argv) > 3:
             kwargs['kernel_type'] = sys.argv[3]
+        if len(sys.argv) > 4:
             kwargs['epsilon'] = float(sys.argv[4])
-        else:
+        if len(sys.argv) > 5:
             sys.exit("Not correct arguments provided. Use %s -h for more information"
                      % (sys.argv[0]))
         main(**kwargs)
