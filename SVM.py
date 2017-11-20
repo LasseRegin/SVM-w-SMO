@@ -91,8 +91,10 @@ class SVM():
             return (max(0, alpha_prime_i + alpha_prime_j - C), min(C, alpha_prime_i + alpha_prime_j))
     def get_rnd_int(self, a,b,z):
         i = z
-        while i == z:
+        cnt=0
+        while i == z and cnt<1000:
             i = rnd.randint(a,b)
+            cnt=cnt+1
         return i
     # Define kernels
     def kernel_linear(self, x1, x2):
